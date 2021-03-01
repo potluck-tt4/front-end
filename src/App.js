@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Header from '../src/components/Header'
+import UserSignIn from '../src/components/UserSignIn'
+import UserSignUp from '../src/components/UserSignUp'
+import PotluckPage from "./PotluckPage";
+import * as yup from 'yup'
+import formSchema from '../src/validation/formSchema'
+
+
 
 const initialFormValues = {
   name: '',
@@ -22,21 +30,83 @@ const initialDisabled = true
 function App() {
   const [user, setUser] = useState(initialUser)
   const [formValues, setFormValues] = useState(initialFormValues)
-  const [formErrors, setFormErrors] = useState(initialFormErrors)
+  const [errors, setErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
+
+  //Validation Handler - validating changes
+
+
+  const handleChange = (name, value) => {
+    yup
+    .reach(formSchema, name)
+    .validate(value)
+    .then(() => {
+      setErrors({...errors, [name]: "",
+    });
+  })
+  .catch(err => {
+    setErrors({...errors, [name]: err.errors[0]
+    });
+  })
+
+    setFormValues({
+      ...formValues, [name]: value
+    })
+  };
+
+  /// Submit Handler - handles submits
+
+  const handleSubmit = () => {
+    const newUser = {
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
+      secondPassword: formValues.secondPassword.trim(),
+    }
+    setUser(user.concat(newUser))
+    setFormValues(initialFormValues)
+  }
+
+ 
+
+
+    /*/onChange - handling changes
+
+    const onChange = evt => {
+      const { name, value, type, checked } = evt.target
+      const valueToUse = type === 'checkbox' ? checked : value
+      change(name, valueToUse)
+  }
+*/
+
+
+  //Side Efffect - Handle Button Status
+
+
+  useEffect(() => {
+    formSchema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
   return (
     <div className="App">
-      <nav>
-        <div className='header'>
-          <h1>PotLuck 🍀</h1>
-        <div className='buttons'>
-          <button className='homeBtn'>Home</button>
-          <button className='signIn'>Sign In</button>
-          <button className='signUp'>Sign Up</button>
-        </div>
-        </div>
-      </nav>
+      <Header/>
+      <UserSignIn 
+      values={formValues} 
+      change={handleChange}
+      submit={handleSubmit}
+      disabled={disabled}
+      errors={errors}
+      />
+      <UserSignUp 
+      values={formValues} 
+      change={handleChange}
+      submit={handleSubmit}
+      disabled={disabled}
+      errors={errors}
+      />
+      <PotluckPage />
     </div>
   );
 }
