@@ -21,7 +21,7 @@ const UserSignIn = (props) => {
         <form className='signInForm' onSubmit={onSubmit}>
             <div className='signInErrors'>
                 <div>{errors.name}</div>
-                <div>{errors.password}</div>
+                <div>{errors.secondPass}</div>
             </div>
             <div className='signInInputs'>
                 <label>Name:
@@ -31,14 +31,14 @@ const UserSignIn = (props) => {
                     id='nameID' 
                     name='name' 
                     type='text'
-                    placeholder='Username..' />
+                    placeholder='Name..' />
                 </label>
                 <label>Password:
                     <input
-                    value={values.name} 
+                    value={values.secondPass} 
                     onChange={onChange} 
                     id='passwordID' 
-                    name='password'
+                    name='secondPass'
                     type='password' 
                     placeholder='Password..'/>
                 </label>

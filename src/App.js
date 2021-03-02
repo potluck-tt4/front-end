@@ -12,17 +12,16 @@ import formSchema from '../src/validation/formSchema'
 
 const initialFormValues = {
   name: '',
-  email: '',
+  nameUp: '',
   password: '',
   secondPass: '',
-
 }
 
 const initialFormErrors = {
   name: '',
+  nameUp: '',
   password: '',
   secondPass: '',
-  
 }
 
 const initialUser = []
@@ -107,7 +106,7 @@ function App() {
       disabled={disabled}
       errors={errors}
       />
-      <PotluckPage />
+      
     </div>
   );
 }
