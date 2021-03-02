@@ -17,7 +17,10 @@ const UserSignUp = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://potluck-backend-tt4.herokuapp.com/api/auth/register")
+      .post(
+        "https://potluck-backend-tt4.herokuapp.com/api/auth/register",
+        newuser
+      )
       //   new user function?
       .then((res) => {
         console.log(res);
