@@ -6,13 +6,14 @@ import styled from 'styled-components';
 const UserSignUp = (props) => {
 
     const { values, change, submit, disabled, errors } = props;
-    console.log('values',values);
+    //console.log('values',values);
 
     const onChange = event => {
         console.log('event target', event.target)
         const { name, value, type, checked } = event.target
-        const valToUse = type === 'checkbox' ? checked : values;
-        change(name, valToUse)
+        //const valToUse = type === 'checkbox' ? checked : values;
+        change(name, value)
+        
     }
 
     const onSubmit = event => {
@@ -20,7 +21,7 @@ const UserSignUp = (props) => {
 
         submit();
     }
-
+    //console.log('values email',values.email)
     return (
         <div>
             <h2>Sign Up</h2>
@@ -28,19 +29,10 @@ const UserSignUp = (props) => {
                 <label>Name:
                     <input
                     type='text'
-                    name='name'
-                    values={values.name}
+                    name='nameUp'
+                    values={values.nameUp}
                     onChange={onChange}
                     placeholder='Enter Name'
-                    />
-                </label>
-                <label>Email:
-                    <input 
-                    type='email' 
-                    name='email' 
-                    value={values.email}
-                    onChange={onChange}
-                    placeholder='Enter email here...'
                     />
                 </label>
                 <label>Password: <br/>
@@ -50,15 +42,6 @@ const UserSignUp = (props) => {
                     value={values.password} 
                     onChange={onChange}
                     placeholder='Enter password here...'
-                    />
-                </label>
-                <label>Confirm Password: <br/>
-                    <input 
-                    type='password' 
-                    name='password' 
-                    value={values.password} 
-                    onChange={onChange}
-                    
                     />
                 </label>
 
