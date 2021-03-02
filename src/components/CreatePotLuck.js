@@ -84,54 +84,55 @@ const CreatePotLuck = () => {
     //     submit()
     //     }
     
-    // const onChange = evt => {
-    //     const { name, value, type } = evt.target
-    //     change(name)
-    //     }
-
+    const onChange = evt => {
+        const { name, value, type } = evt.target
+        // handleChange(name, value)
+        setFormValues({...formValues, [name]: value})
+        }
+            console.log(formValues)
     return (
         <div>
             <form className='createPotluckForm' onSubmit={handleSubmit}>
                 <div className='createPotluckErrors'>
-                    <div>{handleChange.time}</div>
-                    <div>{handleChange.location}</div>
+                    <div>{errors.time}</div>
+                    <div>{errors.location}</div>
                 </div>
                 <div className='createPotluckItemsInput'>
                     <label>Entree Items
-                        <input value={handleChange.Entree} 
-                        onChange={handleChange} 
+                        <input value={formValues.Entree} 
+                        onChange={onChange} 
                         id='entID' 
                         name='Entree' 
                         type='text'
                         placeholder='Tacos..' />
                     </label>
                     <label>Appetizer Items
-                        <input value={handleChange.Entree} 
-                        onChange={handleChange} 
+                        <input value={formValues.Appetizer} 
+                        onChange={onChange} 
                         id='appID' 
                         name='Appetizer' 
                         type='text'
                         placeholder='Tostones..' />
                     </label>
                     <label>Dessert Items
-                        <input value={handleChange.Entree} 
-                        onChange={handleChange} 
+                        <input value={formValues.Dessert} 
+                        onChange={onChange} 
                         id='desID' 
                         name='Dessert' 
                         type='text'
                         placeholder='Tres Leches..' />
                     </label>
                     <label>Drink Items
-                        <input value={handleChange.Entree} 
-                        onChange={handleChange} 
+                        <input value={formValues.Drink} 
+                        onChange={onChange} 
                         id='driID' 
                         name='Drink' 
                         type='text'
                         placeholder='Margaritas..' />
                     </label>
                     <label>Extras Items
-                        <input value={handleChange.Entree} 
-                        onChange={handleChange} 
+                        <input value={formValues.Extras} 
+                        onChange={onChange} 
                         id='exID' 
                         name='Extras' 
                         type='text'
@@ -140,8 +141,8 @@ const CreatePotLuck = () => {
                 </div>
                 <div className='locationInput'>
                     <label>Enter a sweet time for your bangin Potluck
-                        <input vlaue={handleChange.time} 
-                        onChange={handleChange} 
+                        <input vlaue={formValues.time} 
+                        onChange={onChange} 
                         id='potluckID'
                         name='time'
                         type='datetime-local' 
@@ -149,8 +150,8 @@ const CreatePotLuck = () => {
                         max='5000-12-26T00:00' />
                     </label>
                     <label>Where should people meet?
-                        <input value={handleChange.location} 
-                        onChange={handleChange} 
+                        <input value={formValues.location} 
+                        onChange={onChange} 
                         id='locID' 
                         name='location'
                         type='text'
