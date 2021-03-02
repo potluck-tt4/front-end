@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PotluckPage = () => {
+const UserSignIn = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PotluckPage = () => {
     )
 }
 
-export default PotluckPage
+export default UserSignIn
