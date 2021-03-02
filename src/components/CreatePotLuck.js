@@ -39,7 +39,7 @@ const CreatePotLuck = () => {
     
     //Validation that input is correct
 
-    const handleChange = (name, value) => {
+    const changeHandler = (name, value) => {
         yup
         .reach(CreatePotluckSchema, name)
         .validate(value)
@@ -89,7 +89,7 @@ const CreatePotLuck = () => {
     
     const onChange = evt => {
         const { name, value, type } = evt.target
-        // handleChange(name, value)
+        // changeHandler(name, value)
         setFormValues({...formValues, [name]: value})
         }
             console.log(formValues)
@@ -173,7 +173,7 @@ const CreatePotLuck = () => {
                 } */}
                     <PotluckPage
                     values={formValues} 
-                    change={handleChange}
+                    change={onChange}
                     submit={handleSubmit}
                     disabled={disabled}
                     errors={errors}

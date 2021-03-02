@@ -1,5 +1,6 @@
 import React from 'react'
 import CreatePotLuck from './CreatePotLuck'
+import styled from 'styled-components'
 
 const UserSignIn = (props) => {
 
@@ -9,7 +10,7 @@ const UserSignIn = (props) => {
         evt.preventDefault()
         submit()
     }
-    
+
     const onChange = evt => {
         const { name, value, type } = evt.target
         change(name, value)
@@ -17,38 +18,46 @@ const UserSignIn = (props) => {
 
     return (
         <div>
-        <h2>Log In</h2>
-        <form className='signInForm' onSubmit={onSubmit}>
-            <div className='signInErrors'>
-                <div>{errors.name}</div>
-                <div>{errors.secondPass}</div>
-            </div>
-            <div className='signInInputs'>
-                <label>Name:
-                    <input 
-                    value={values.name} 
-                    onChange={onChange} 
-                    id='nameID' 
-                    name='name' 
-                    type='text'
-                    placeholder='Name..' />
-                </label>
-                <label>Password:
+            <h2>Log In</h2>
+            <form className='signInForm' onSubmit={onSubmit}>
+                <div className='signInErrors'>
+                    <div>{errors.name}</div>
+                    <div>{errors.secondPass}</div>
+                </div>
+                <SignInContainer className='signInInputs'>
+                    <label>Name:
                     <input
-                    value={values.secondPass} 
-                    onChange={onChange} 
-                    id='passwordID' 
-                    name='secondPass'
-                    type='password' 
-                    placeholder='Password..'/>
-                </label>
-                <button id='signInBtn' disabled={disabled}>Sign In</button>
-            </div>
-        </form>
-         
-        <CreatePotLuck />
+                            value={values.name}
+                            onChange={onChange}
+                            id='nameID'
+                            name='name'
+                            type='text'
+                            placeholder='Name..' />
+                    </label>
+                    <label>Password:
+                    <input
+                            value={values.secondPass}
+                            onChange={onChange}
+                            id='passwordID'
+                            name='secondPass'
+                            type='password'
+                            placeholder='Password..' />
+                    </label>
+                    <button id='signInBtn' disabled={disabled}>Sign In</button>
+                </SignInContainer>
+            </form>
+
+            <CreatePotLuck />
         </div>
     )
 }
 
 export default UserSignIn
+
+const SignInContainer = styled.div`
+    border: 1px solid black;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
+`;

@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
+
 const backgroundImage = 'https://hips.hearstapps.com/ell.h-cdn.co/assets/15/52/1450738482-elle-potluck-04-getty.jpg';
 
 export default function Header(){
