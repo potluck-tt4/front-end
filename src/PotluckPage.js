@@ -1,13 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const PotluckPage = () => {
-    const { values, change, submit, disabled, errors } = props
+const PotluckPage = (props) => {
+  const { values, change, submit, disabled, errors } = props;
 
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};
 
-export default PotluckPage
+export default PotluckPage;
