@@ -4,7 +4,6 @@ import axios from "axios";
 import formSchema from "../validation/formSchema";
 
 const UserSignUp = (props) => {
-
   const { values, change, submit } = props;
   console.log("values", values);
 
@@ -18,10 +17,7 @@ const UserSignUp = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(
-        "https://potluck-backend-tt4.herokuapp.com/api/auth/register",
-        newuser
-      )
+      .post("https://potluck-backend-tt4.herokuapp.com/api/auth/register")
       //   new user function?
       .then((res) => {
         console.log(res);
@@ -86,9 +82,6 @@ const UserSignUp = (props) => {
 
 export default UserSignUp;
 
-
-
-
 /*
 export default function UserSignUp(props) {
     const { values, change, submit, disabled, errors } = props;
@@ -104,4 +97,3 @@ export default function UserSignUp(props) {
     
 }
 */
-

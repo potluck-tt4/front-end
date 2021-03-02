@@ -11,20 +11,18 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "../src/components/PrivateRoute";
 
 const initialFormValues = {
-
-  name: '',
-  nameUp: '',
-  password: '',
-  secondPass: '',
-}
+  name: "",
+  nameUp: "",
+  password: "",
+  secondPass: "",
+};
 
 const initialFormErrors = {
-  name: '',
-  nameUp: '',
-  password: '',
-  secondPass: '',
-}
-
+  name: "",
+  nameUp: "",
+  password: "",
+  secondPass: "",
+};
 
 const initialUser = [];
 const initialDisabled = true;
@@ -58,8 +56,8 @@ function App() {
 
   const handleSubmit = () => {
     const newUser = {
-      name: formValues.username.trim(),
-      password: formValues.password.trim(),
+      name: formValues.username,
+      password: formValues.password,
     };
     setUser(user.concat(newUser));
     setFormValues(initialFormValues);
@@ -84,7 +82,6 @@ function App() {
 
   return (
     <div className="App">
-
       <Route exact path="/">
         <Header />
       </Route>
@@ -110,9 +107,7 @@ function App() {
         <PotluckPage />
       </Route>
 
-      <PrivateRoute exact path="CreatePotluck" component={CreatePotLuck} /
-      
-
+      <PrivateRoute exact path="CreatePotluck" component={CreatePotLuck} />
     </div>
   );
 }
