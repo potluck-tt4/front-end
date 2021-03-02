@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
+import PotluckPage from '../PotluckPage'
 import CreatePotluckSchema from '../validation/CreatePotluckSchema'
 
 
@@ -160,7 +161,12 @@ const CreatePotLuck = () => {
                     <button id='createPotluckBtn' disabled={disabled}>POTLUCK</button>
                 </div>
             </form>
-            
+            <PotluckPage 
+            values={formValues} 
+            change={handleChange}
+            submit={handleSubmit}
+            disabled={disabled}
+            errors={errors} />
         </div>
     )
 }
