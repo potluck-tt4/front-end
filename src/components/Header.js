@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const backgroundImage = 'https://images.unsplash.com/photo-1561350111-7daa4f284bc6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
+const backgroundImage = 'https://hips.hearstapps.com/ell.h-cdn.co/assets/15/52/1450738482-elle-potluck-04-getty.jpg';
 
 export default function Header(){
     return(
