@@ -3,6 +3,7 @@ const initialState = {
   email: "",
   password: "",
   secondPass: "",
+  //loggedIn: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -11,3 +12,6 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
+
+
