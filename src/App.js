@@ -11,17 +11,20 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "../src/components/PrivateRoute";
 
 const initialFormValues = {
-  name: "",
-  // email: "",
-  password: "",
-  // secondPass: "",
-};
+
+  name: '',
+  nameUp: '',
+  password: '',
+  secondPass: '',
+}
 
 const initialFormErrors = {
-  name: "",
-  password: "",
-  // secondPass: "",
-};
+  name: '',
+  nameUp: '',
+  password: '',
+  secondPass: '',
+}
+
 
 const initialUser = [];
 const initialDisabled = true;
@@ -81,6 +84,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Route exact path="/">
         <Header />
       </Route>
@@ -106,7 +110,9 @@ function App() {
         <PotluckPage />
       </Route>
 
-      <PrivateRoute exact path="CreatePotluck" component={CreatePotLuck} />
+      <PrivateRoute exact path="CreatePotluck" component={CreatePotLuck} /
+      
+
     </div>
   );
 }

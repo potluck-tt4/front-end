@@ -7,4 +7,7 @@ export default yup.object().shape({
     location: yup
     .string()
     .required('A location is required'),
+    cover: yup
+    .string()
+    .oneOf(['Entree', 'Appetizer', 'Dessert', 'Drink', 'Extras'], 'Something must be chosen.'),
 })

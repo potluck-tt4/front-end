@@ -4,6 +4,7 @@ import axios from "axios";
 import formSchema from "../validation/formSchema";
 
 const UserSignUp = (props) => {
+
   const { values, change, submit } = props;
   console.log("values", values);
 
@@ -84,3 +85,23 @@ const UserSignUp = (props) => {
 };
 
 export default UserSignUp;
+
+
+
+
+/*
+export default function UserSignUp(props) {
+    const { values, change, submit, disabled, errors } = props;
+
+    const onChange = event => {
+        console.log(event.target)
+        const { name, value, type, checked } = event.target
+        const valToUse = type === 'checkbox' ? checked : values;
+        change(name, valToUse)
+    }
+    
+
+    
+}
+*/
+

@@ -12,6 +12,7 @@ const initialFormValues = {
     Extras: '', 
     time: '',
     location: '',
+    cover: '',
 
 }
 
@@ -22,7 +23,8 @@ const initialErrors = {
     Drink: '',
     Extras: '', 
     time: '',
-    location: '',   
+    location: '', 
+    cover: '',  
 }
 
 
@@ -95,6 +97,7 @@ const CreatePotLuck = () => {
         <div>
             <form className='createPotluckForm' onSubmit={handleSubmit}>
                 <div className='createPotluckErrors'>
+                    <h2>Creat Your Potluck</h2>
                     <div>{errors.time}</div>
                     <div>{errors.location}</div>
                 </div>
@@ -161,12 +164,20 @@ const CreatePotLuck = () => {
                     <button id='createPotluckBtn' disabled={disabled}>POTLUCK</button>
                 </div>
             </form>
-            <PotluckPage 
-            values={formValues} 
-            change={handleChange}
-            submit={handleSubmit}
-            disabled={disabled}
-            errors={errors} />
+            {/* {
+                potluckInfo.map(plI => {
+                    return(
+                        <PotluckPage key={plI.id} details={plI}/>
+                    )
+                })
+                } */}
+                    <PotluckPage
+                    values={formValues} 
+                    change={handleChange}
+                    submit={handleSubmit}
+                    disabled={disabled}
+                    errors={errors}
+                    />
         </div>
     )
 }
