@@ -26,6 +26,10 @@ const UserSignUp = (props) => {
     return (
         <SignUpContainer>
             <h2>Sign Up</h2>
+            <div className='signUpErrors'>
+                <div>{errors.nameUp}</div>
+                <div>{errors.password}</div>
+            </div>
             <Form onSubmit={onSubmit}>
                 <label>Name: <br />
                     <input

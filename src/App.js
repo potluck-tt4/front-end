@@ -38,16 +38,18 @@ function App() {
 
   const handleChange = (name, value) => {
     yup
-    .reach(formSchema, name)
-    .validate(value)
-    .then(() => {
-      setErrors({...errors, [name]: "",
-    });
-  })
-  .catch(err => {
-    setErrors({...errors, [name]: err.errors[0]
-    });
-  })
+      .reach(formSchema, name)
+      .validate(value)
+      .then(() => {
+        setErrors({
+          ...errors, [name]: "",
+        });
+      })
+      .catch(err => {
+        setErrors({
+          ...errors, [name]: err.errors[0]
+        });
+      })
 
     setFormValues({
       ...formValues, [name]: value
@@ -58,25 +60,25 @@ function App() {
 
   const handleSubmit = () => {
     const newUser = {
-      name: formValues.name.trim(),
-      email: formValues.email.trim(),
-      password: formValues.password.trim(),
-      secondPassword: formValues.secondPassword.trim(),
+      name: formValues.name,
+      email: formValues.email,
+      password: formValues.password,
+      secondPassword: formValues.secondPassword,
     }
     setUser(user.concat(newUser))
     setFormValues(initialFormValues)
   }
 
- 
 
 
-    /*/onChange - handling changes
 
-    const onChange = evt => {
-      const { name, value, type, checked } = evt.target
-      const valueToUse = type === 'checkbox' ? checked : value
-      change(name, valueToUse)
-  }
+  /*/onChange - handling changes
+
+  const onChange = evt => {
+    const { name, value, type, checked } = evt.target
+    const valueToUse = type === 'checkbox' ? checked : value
+    change(name, valueToUse)
+}
 */
 
 
@@ -91,22 +93,22 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
-      <UserSignIn 
-      values={formValues} 
-      change={handleChange}
-      submit={handleSubmit}
-      disabled={disabled}
-      errors={errors}
+      <Header />
+      <UserSignIn
+        values={formValues}
+        change={handleChange}
+        submit={handleSubmit}
+        disabled={disabled}
+        errors={errors}
       />
-      <UserSignUp 
-      values={formValues} 
-      change={handleChange}
-      submit={handleSubmit}
-      disabled={disabled}
-      errors={errors}
+      <UserSignUp
+        values={formValues}
+        change={handleChange}
+        submit={handleSubmit}
+        disabled={disabled}
+        errors={errors}
       />
-      
+
     </div>
   );
 }

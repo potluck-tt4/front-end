@@ -6,20 +6,20 @@ import styled from 'styled-components';
 
 const backgroundImage = 'https://hips.hearstapps.com/ell.h-cdn.co/assets/15/52/1450738482-elle-potluck-04-getty.jpg';
 
-export default function Header(){
-    return(
+export default function Header() {
+    return (
         <Jumbotron>
-            
-        <nav>
-             <div className='header'>
-                 <StyledH1>PotLuck 🍀</StyledH1>
-            <div className='buttons'>
-             <button className='homeBtn'>Home</button>
-             <button className='signIn'>Sign In</button>
-            <button className='signUp'>Sign Up</button>
-            </div>
-            </div>
-        </nav>
+
+            <nav>
+                <div className='header'>
+                    <StyledH1>PotLuck 🍀</StyledH1>
+                    <div className='buttons'>
+                        <button className='homeBtn'>Home</button>
+                        <button className='signIn'>Sign In</button>
+                        <button className='signUp'>Sign Up</button>
+                    </div>
+                </div>
+            </nav>
         </Jumbotron>
     )
 }
