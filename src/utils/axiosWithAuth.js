@@ -10,3 +10,7 @@ export const axiosWithAuth = () => {
     },
   });
 };
+
+
+// axiosWithAuth().post("api/register", newUser)
+// supercharging axios 
