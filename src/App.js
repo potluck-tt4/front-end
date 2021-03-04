@@ -1,4 +1,11 @@
-
+import React from 'react'
+import Header from "../src/components/Header";
+import UserSignIn from "../src/components/UserSignIn";
+import UserSignUp from "../src/components/UserSignUp";
+import PotluckPage from "./PotluckPage";
+import CreatePotLuck from "../src/components/CreatePotLuck";
+import { Route } from "react-router-dom";
+import PrivateRoute from "../src/components/PrivateRoute";
 
 
 
@@ -17,23 +24,17 @@
 //   secondPass: '',
 // }
 
-const initialUser = []
+
 // const initialDisabled = true
 
-import Header from "../src/components/Header";
-import UserSignIn from "../src/components/UserSignIn";
-import UserSignUp from "../src/components/UserSignUp";
-import PotluckPage from "./PotluckPage";
-import CreatePotLuck from "../src/components/CreatePotLuck";
-import { Route } from "react-router-dom";
-import PrivateRoute from "../src/components/PrivateRoute";
+
 
 
 
 
 
 function App() {
-  const [user, setUser] = useState(initialUser)
+ 
   // const [formValues, setFormValues] = useState(initialFormValues)
   // const [errors, setErrors] = useState(initialFormErrors)
   // const [disabled, setDisabled] = useState(initialDisabled)
@@ -89,7 +90,7 @@ function App() {
       <Route exact path="/">
         <Header />
       </Route>
-      <Route exact path="/UserSignIn">
+      <Route exact path="/CreatePotluckPage">
         <UserSignIn
          
         />

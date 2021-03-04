@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import PotluckPage from '../PotluckPage'
-
-import Confirmation from './Confirmation'
 import CreatePotluckSchema from '../validation/CreatePotluckSchema'
+import Confirmation from './Confirmation'
 import styled from 'styled-components'
 
 
-const initialFormValues = {
-    Entree: '',
-    Appetizer: '',
-    Dessert: '',
-    Drink: '',
-    Extras: '',
-
-import CreatePotluckSchema from '../validation/CreatePotluckSchema'
 
 
 const initialFormValues = {
@@ -42,7 +33,6 @@ const initialErrors = {
     cover: '',
 
      
- main
 }
 
 
@@ -104,38 +94,10 @@ const CreatePotLuck = () => {
     
     //Validation that input is correct
 
-    const handleChange = (name, value) => {
-        yup
-        .reach(CreatePotluckSchema, name)
-        .validate(value)
-        .then(() => {
-          setErrors({...errors, [name]: "",
-        });
-      })
-      .catch(err => {
-        setErrors({...errors, [name]: err.errors[0]
-        });
-      })
-    
-        setFormValues({
-          ...formValues, [name]: value
-        })
-      };
+
 
       //Submission values to be kept/reset
 
-      const handleSubmit = (evt) => {
-            evt.preventDefault();
-        const newPotluckInfo = {
-          Entree: formValues.Entree.trim(),
-          Appetizer: formValues.Appetizer.trim(),
-          Dessert: formValues.Dessert.trim(),
-          Drink: formValues.Drink.trim(),
-          Extras: formValues.Extras.trim(),
-        }
-        setPotluckInfo(potluckInfo.concat(newPotluckInfo))
-        setFormValues(initialFormValues)
-      }
     
       //Validation for Button to become active
 
@@ -160,7 +122,9 @@ const CreatePotLuck = () => {
     }
     console.log(formValues)
     return (
+        
         <div>
+
             <CreatePotLuckForm className='createPotluckForm' onSubmit={handleSubmit}>
 
                 <div className='createPotluckErrors'>
@@ -244,41 +208,11 @@ const CreatePotLuck = () => {
                 disabled={disabled}
                 errors={errors}
             />
-              <input vlaue={formValues.time} 
-                        onChange={onChange} 
-                        id='potluckID'
-                        name='time'
-                        type='datetime-local' 
-                        min='0001-01-01T00:00' 
-                        max='5000-12-26T00:00' />
-                    </label>
-                    <label>Where should people meet?
-                        <input value={formValues.location} 
-                        onChange={onChange} 
-                        id='locID' 
-                        name='location'
-                        type='text'
-                        placeholder="Ryan's kickback.." />
-                    </label>
-                    <button id='createPotluckBtn' disabled={disabled}>POTLUCK</button>
+             
                 </div>
-            </form>
-            {/* {
-                potluckInfo.map(plI => {
-                    return(
-                        <PotluckPage key={plI.id} details={plI}/>
-                    )
-                })
-                } */}
-                    <PotluckPage
-                    values={formValues} 
-                    change={handleChange}
-                    submit={handleSubmit}
-                    disabled={disabled}
-                    errors={errors}
-                    />
+            
+        
 
-        </div>
     )
 }
 
