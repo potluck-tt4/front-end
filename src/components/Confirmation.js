@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import ConfirmationSchema from '../validation/ConfirmationSchema'
+import styled from 'styled-components'
 
 const initialConfirmationForm = {
     //checkboxes
@@ -29,7 +30,7 @@ const Confirmation = (props) => {
 
     const {values} = props
 
-    // maybe switch name: '' to name: false if not working
+    
     const ConfirmationFormValidation = (name, value) => {
         yup.reach(ConfirmationSchema, name)
         .validate(value)
@@ -65,7 +66,7 @@ const Confirmation = (props) => {
 
     return (
         <div>
-            <form className= 'ConfirmationForm' onSubmit={formSubmit}>
+            <ConfirmationForm className= 'ConfirmationForm' onSubmit={formSubmit}>
                 <h2>We'd like to formally invite you to a Potluck at {values.location} on {values.time}</h2>
                     <div className='ConfirmationErrors'>
                         <div>{confirmationErrors.name}</div>
@@ -98,10 +99,49 @@ const Confirmation = (props) => {
                     </label>
                     <button id='confirmationBtn' disabled={disable}>Fun is just a click away</button>
                 </div>
-            </form>
+            </ConfirmationForm>
             
         </div>
     )
 }
 
 export default Confirmation
+
+
+const ConfirmationForm = styled.form`
+    width: 60%;
+    padding: 2.5rem 0 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 10% 0;
+    label, input {
+    font-size: 1.6rem;
+    text-align:center;
+    }
+button {
+    width: 15%;
+    border-radius: 25px;
+    border: 3px solid green;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: darkseagreen;
+    transition: .3s;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(33, 66, 150, 0.9);
+        }
+    label {
+       background-color: slateblue;
+       text-align:center;
+    }
+    input {
+        text-align:center;
+        border: 2px solid red;
+        border-radius: 10px;
+    }
+   `
