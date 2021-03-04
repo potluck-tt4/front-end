@@ -22,7 +22,7 @@ const initialConfirmation = [];
 const initialDisable = true;
 
 const Confirmation = (props) => {
-    const [confirmation, setConfirmation] = useState(initialConfirmationForm)
+    const [confirmation, setConfirmation] = useState(initialConfirmation)
     const [confirmationForm, setConfirmationForm] = useState(initialConfirmationForm)
     const [confirmationErrors, setConfirmationErrors] = useState(initialConfirmationErrors)
     const [disable, setDisable] = useState(initialDisable)
