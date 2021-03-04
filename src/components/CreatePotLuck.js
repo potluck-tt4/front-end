@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import PotluckPage from '../PotluckPage'
+
 import Confirmation from './Confirmation'
 import CreatePotluckSchema from '../validation/CreatePotluckSchema'
 import styled from 'styled-components'
@@ -12,6 +13,17 @@ const initialFormValues = {
     Dessert: '',
     Drink: '',
     Extras: '',
+
+import CreatePotluckSchema from '../validation/CreatePotluckSchema'
+
+
+const initialFormValues = {
+    Entree: '', 
+    Appetizer: '',
+    Dessert: '',
+    Drink: '',
+    Extras: '', 
+
     time: '',
     location: '',
     cover: '',
@@ -23,10 +35,14 @@ const initialErrors = {
     Appetizer: '',
     Dessert: '',
     Drink: '',
+
     Extras: '',
     time: '',
     location: '',
     cover: '',
+
+     
+ main
 }
 
 
@@ -38,6 +54,7 @@ const CreatePotLuck = () => {
     const [formValues, setFormValues] = useState(initialFormValues)
     const [errors, setErrors] = useState(initialErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
+
 
     //Validation that input is correct
 
@@ -84,6 +101,51 @@ const CreatePotLuck = () => {
         });
     }, [formValues]);
 
+    
+    //Validation that input is correct
+
+    const handleChange = (name, value) => {
+        yup
+        .reach(CreatePotluckSchema, name)
+        .validate(value)
+        .then(() => {
+          setErrors({...errors, [name]: "",
+        });
+      })
+      .catch(err => {
+        setErrors({...errors, [name]: err.errors[0]
+        });
+      })
+    
+        setFormValues({
+          ...formValues, [name]: value
+        })
+      };
+
+      //Submission values to be kept/reset
+
+      const handleSubmit = (evt) => {
+            evt.preventDefault();
+        const newPotluckInfo = {
+          Entree: formValues.Entree.trim(),
+          Appetizer: formValues.Appetizer.trim(),
+          Dessert: formValues.Dessert.trim(),
+          Drink: formValues.Drink.trim(),
+          Extras: formValues.Extras.trim(),
+        }
+        setPotluckInfo(potluckInfo.concat(newPotluckInfo))
+        setFormValues(initialFormValues)
+      }
+    
+      //Validation for Button to become active
+
+      useEffect(() => {
+        CreatePotluckSchema.isValid(formValues).then((valid) => {
+          setDisabled(!valid);
+        });
+      }, [formValues]);
+
+
 
 
     //   const onSubmit = evt => {
@@ -100,6 +162,7 @@ const CreatePotLuck = () => {
     return (
         <div>
             <CreatePotLuckForm className='createPotluckForm' onSubmit={handleSubmit}>
+
                 <div className='createPotluckErrors'>
                     <h2>Creat Your Potluck</h2>
                     <div>{errors.time}</div>
@@ -107,6 +170,7 @@ const CreatePotLuck = () => {
                 </div>
                 <div className='createPotluckItemsInput'>
                     <label>Entree Items
+
                         <input value={formValues.Entree}
                             onChange={onChange}
                             id='entID'
@@ -145,10 +209,12 @@ const CreatePotLuck = () => {
                             name='Extras'
                             type='text'
                             placeholder='Salsa Verde..' />
+
                     </label>
                 </div>
                 <div className='locationInput'>
                     <label>Enter a sweet time for your bangin Potluck
+
                         <input vlaue={formValues.time}
                             onChange={onChange}
                             id='potluckID'
@@ -178,11 +244,46 @@ const CreatePotLuck = () => {
                 disabled={disabled}
                 errors={errors}
             />
+              <input vlaue={formValues.time} 
+                        onChange={onChange} 
+                        id='potluckID'
+                        name='time'
+                        type='datetime-local' 
+                        min='0001-01-01T00:00' 
+                        max='5000-12-26T00:00' />
+                    </label>
+                    <label>Where should people meet?
+                        <input value={formValues.location} 
+                        onChange={onChange} 
+                        id='locID' 
+                        name='location'
+                        type='text'
+                        placeholder="Ryan's kickback.." />
+                    </label>
+                    <button id='createPotluckBtn' disabled={disabled}>POTLUCK</button>
+                </div>
+            </form>
+            {/* {
+                potluckInfo.map(plI => {
+                    return(
+                        <PotluckPage key={plI.id} details={plI}/>
+                    )
+                })
+                } */}
+                    <PotluckPage
+                    values={formValues} 
+                    change={handleChange}
+                    submit={handleSubmit}
+                    disabled={disabled}
+                    errors={errors}
+                    />
+
         </div>
     )
 }
 
 export default CreatePotLuck
+
 //input values need to be changed
 
 const CreatePotLuckForm = styled.form`
@@ -224,3 +325,4 @@ button {
    
     
 `
+
