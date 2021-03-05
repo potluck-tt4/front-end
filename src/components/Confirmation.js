@@ -68,10 +68,10 @@ const Confirmation = (props) => {
         <div>
             <ConfirmationForm className= 'ConfirmationForm' onSubmit={formSubmit}>
                 <h2>We'd like to formally invite you to a Potluck at {values.location} on {values.time}</h2>
-                    <div className='ConfirmationErrors'>
+                    <StyledConfirmationErrors className='ConfirmationErrors'>
                         <div>{confirmationErrors.name}</div>
                         <div>{confirmationErrors.going}</div>
-                    </div>
+                    </StyledConfirmationErrors>
                 <div className='RSVP'>
                     <label>Name:
                         <input 
@@ -109,7 +109,7 @@ export default Confirmation
 
 
 const ConfirmationForm = styled.form`
-    width: 60%;
+    width: 100%;
     padding: 2.5rem 0 2.5rem 0;
     display: flex;
     flex-direction: column;
@@ -145,3 +145,8 @@ button {
         border-radius: 10px;
     }
    `
+
+   const StyledConfirmationErrors = styled.div`
+    background: khaki;
+    color: chocolate;
+`;

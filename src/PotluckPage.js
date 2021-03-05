@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const PotluckPage = (props) => {
 
@@ -9,11 +10,11 @@ const PotluckPage = (props) => {
 
     return (
         <div>
+            <PotluckPageForm className='potluckPageForm' onSubmit={submit}>
             <h2>{values.time}{values.location}</h2>
-            <div className='userFormErrors'>
+            <StyledPotluckErrors className='userFormErrors'>
                 <div>{errors.cover}</div>
-            </div>
-            <form className='potluckPageForm' onSubmit={submit}>
+            </StyledPotluckErrors>
                 <div className='userEntreeRadio'>
                     <input
                         type='radio'
@@ -67,10 +68,52 @@ const PotluckPage = (props) => {
 
                 <button disabled={disabled}>Submit</button>
 
-            </form>
+            </PotluckPageForm>
 
         </div>
     )
 }
 
 export default PotluckPage
+
+
+const PotluckPageForm = styled.form`
+    width: 80%;
+    padding: 2.5rem 0 2.5rem 0;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 0 10% 0;
+    label, input {
+    font-size: 1.6rem;
+    }
+button {
+    width: 15%;
+    border-radius: 25px;
+    border: 3px solid green;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: darkseagreen;
+    transition: .5s;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(33, 66, 150, 0.9);
+        }
+    label {
+       background-color: slateblue;
+       text-align:center;
+    }
+    input {
+        text-align:center;
+        border: 2px solid red;
+        color: red;
+    }
+` 
+const StyledPotluckErrors = styled.div`
+    background: khaki;
+    color: chocolate;
+`;
