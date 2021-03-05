@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import * as yup from 'yup';
@@ -69,9 +70,11 @@ const UserSignUp = () => {
     
     useEffect(() => {
         signUpSchema.isValid(formValues).then((valid) => {
+
           setDisabled(!valid);
         });
       }, [formValues]);
+
 
 
     return (
@@ -183,4 +186,69 @@ const StyledSignUpErrors = styled.div`
     background: khaki;
     color: chocolate;
 `;
+
+    axios
+      .post("https://potluck-backend-tt4.herokuapp.com/api/auth/register", newUser)
+      
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    submit();
+  };
+
+  return (
+    <div>
+      <h2>Sign Up</h2>
+      <form onSubmit={onSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            values={formValues.name}
+            onChange={onChange}
+            placeholder="Enter Name"
+          />
+        </label>
+      
+        <label>
+          Password: <br />
+          <input
+            type="password"
+            name="password"
+            value={formValues.password}
+            onChange={onChange}
+            placeholder="Enter password here..."
+          />
+        </label>
+       
+      </form>
+      <button onClick={onSubmit} type="submit">
+        Sign Me Up
+      </button>
+    </div>
+  );
+};
+
+export default UserSignUp;
+
+/*
+export default function UserSignUp(props) {
+    const { values, change, submit, disabled, errors } = props;
+
+    const onChange = event => {
+        console.log(event.target)
+        const { name, value, type, checked } = event.target
+        const valToUse = type === 'checkbox' ? checked : values;
+        change(name, valToUse)
+    }
+    
+
+    
+}
+*/
 

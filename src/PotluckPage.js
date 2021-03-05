@@ -1,3 +1,4 @@
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -74,6 +75,7 @@ const PotluckPage = (props) => {
     )
 }
 
+
 export default PotluckPage
 
 
@@ -117,3 +119,4 @@ const StyledPotluckErrors = styled.div`
     background: khaki;
     color: chocolate;
 `;
+

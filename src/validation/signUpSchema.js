@@ -1,3 +1,4 @@
+
 import * as yup from 'yup';
 
 export default yup.object().shape({
@@ -9,3 +10,4 @@ export default yup.object().shape({
         .required('Password for signup is required')
         .min(5, 'Password must be at least 5 characters wrong.'),
 })
+

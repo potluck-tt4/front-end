@@ -1,21 +1,41 @@
+
 import React, {useState} from "react";
 import "./App.css";
 import Header from '../src/components/Header'
 import UserSignIn from '../src/components/UserSignIn'
 import UserSignUp from '../src/components/UserSignUp'
+import PotluckPage from "./PotluckPage";
+import CreatePotLuck from "../src/components/CreatePotLuck";
+import { Route } from "react-router-dom";
+import PrivateRoute from "../src/components/PrivateRoute";
 
-const initialUser = []
+
+
 
 
 function App() {
-  const [user, setUser] = useState(initialUser)
- 
 
   return (
     <div className="App">
-      <Header />
-      <UserSignIn/>
-      <UserSignUp/>
+
+      <Route exact path="/">
+        <Header />
+      </Route>
+      <Route exact path="/UserSignIn">
+        <UserSignIn
+         
+        />
+      </Route>
+      <Route>
+        <UserSignUp
+         
+        />
+      </Route>
+      <Route exact path="/PotluckPage">
+        <PotluckPage />
+      </Route>
+
+      <PrivateRoute exact path="CreatePotluck" component={CreatePotLuck} />
 
     </div>
   );
