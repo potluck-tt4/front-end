@@ -109,29 +109,28 @@ const CreatePotLuck = () => {
 
 
 
-
-    //   const onSubmit = evt => {
-    //     evt.preventDefault()
-    //     submit()
-    //     }
-
     const onChange = evt => {
         const { name, value } = evt.target
         changeHandler(name, value)
         setFormValues({ ...formValues, [name]: value })
     }
-    console.log(formValues)
+    
     return (
+
         
-        <div>
+        
+
+
+        <StyledCPF>
 
             <CreatePotLuckForm className='createPotluckForm' onSubmit={handleSubmit}>
 
-                <div className='createPotluckErrors'>
-                    <h2>Creat Your Potluck</h2>
+                    <h2>Create Your Potluck</h2>
+                <StyledCreateErrors className='createPotluckErrors'>
+
                     <div>{errors.time}</div>
                     <div>{errors.location}</div>
-                </div>
+                </StyledCreateErrors>
                 <div className='createPotluckItemsInput'>
                     <label>Entree Items
 
@@ -141,7 +140,7 @@ const CreatePotLuck = () => {
                             name='Entree'
                             type='text'
                             placeholder='Tacos..' />
-                    </label>
+                    </label><br />
                     <label>Appetizer Items
                         <input value={formValues.Appetizer}
                             onChange={onChange}
@@ -149,7 +148,7 @@ const CreatePotLuck = () => {
                             name='Appetizer'
                             type='text'
                             placeholder='Tostones..' />
-                    </label>
+                    </label><br />
                     <label>Dessert Items
                         <input value={formValues.Dessert}
                             onChange={onChange}
@@ -157,7 +156,7 @@ const CreatePotLuck = () => {
                             name='Dessert'
                             type='text'
                             placeholder='Tres Leches..' />
-                    </label>
+                    </label><br />
                     <label>Drink Items
                         <input value={formValues.Drink}
                             onChange={onChange}
@@ -165,7 +164,7 @@ const CreatePotLuck = () => {
                             name='Drink'
                             type='text'
                             placeholder='Margaritas..' />
-                    </label>
+                    </label><br />
                     <label>Extras Items
                         <input value={formValues.Extras}
                             onChange={onChange}
@@ -174,9 +173,10 @@ const CreatePotLuck = () => {
                             type='text'
                             placeholder='Salsa Verde..' />
 
-                    </label>
+                    </label><br />
+
                 </div>
-                <div className='locationInput'>
+                <StyledLoc className='locationInput'>
                     <label>Enter a sweet time for your bangin Potluck
 
                         <input vlaue={formValues.time}
@@ -196,7 +196,7 @@ const CreatePotLuck = () => {
                             placeholder="Ryan's kickback.." />
                     </label>
                     <button id='createPotluckBtn' disabled={disabled}>POTLUCK</button>
-                </div>
+                </StyledLoc>
             </CreatePotLuckForm>
             <Confirmation 
             values={formValues}
@@ -208,29 +208,24 @@ const CreatePotLuck = () => {
                 disabled={disabled}
                 errors={errors}
             />
-             
-                </div>
-            
-        
+
+        </StyledCPF>
 
     )
 }
 
 export default CreatePotLuck
 
-//input values need to be changed
-
 const CreatePotLuckForm = styled.form`
-    width: 60%;
+    width: 80%;
     padding: 2.5rem 0 2.5rem 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin: 0 0 10% 0;
     label, input {
     font-size: 1.6rem;
-    text-align:center;
     }
 button {
     width: 15%;
@@ -242,7 +237,7 @@ button {
     align-items: center;
     text-align: center;
     background-color: darkseagreen;
-    transition: .3s;
+    transition: .5s;
     cursor: pointer;
     &:hover{
         background-color: rgba(33, 66, 150, 0.9);
@@ -254,9 +249,25 @@ button {
     input {
         text-align:center;
         border: 2px solid red;
-        border-radius: 10px;
+        color: red;
     }
    
     
 `
+
+const StyledLoc = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+`;
+
+const StyledCPF = styled.div `
+    background-color: #80bab5;
+    opacity: 0.8;
+    color: firebrick;
+`;
+
+const StyledCreateErrors = styled.div`
+    background: khaki;
+    color: chocolate;
+`;
 

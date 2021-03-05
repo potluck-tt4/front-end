@@ -6,7 +6,7 @@ const ConfirmationSchema = yup.object().shape({
     .min(2, 'Name must be at least 2 characters long'),
     going: yup
     .boolean()
-    .oneOf([true], 'Please come'),
+    .oneOf([true], 'Please come.... please'),
     notGoing: yup.boolean()
 })
 export default ConfirmationSchema

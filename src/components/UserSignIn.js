@@ -88,15 +88,7 @@ const UserSignIn = () => {
         handleFormValidation(name, value)
         
     }
-    
-    // const onSubmit = event => {
-    //     event.preventDefault();
-    //     const newUsername = {
-    //         name: formValues.name,
-    //         password: formValues.password
-    //     }
-    //     submit();
-    // }
+
 
     useEffect(() => {
         signInSchema.isValid(formValues).then((valid) => {
@@ -110,19 +102,19 @@ const UserSignIn = () => {
             <SignInContainer>
                 <h2>Log In</h2>
                 <SignInForm className='signInForm' onSubmit={handleSubmit}>
-                    <div className='signInErrors'>
+                    <StyledSignInErrors className='signInErrors'>
                         <div>{errors.name}</div>
                         <div>{errors.password}</div>
-                    </div>
+                    </StyledSignInErrors>
                     <SignInInputs className='signInInputs'>
-                        <label>Name: <br />
+                        <label>Username: <br />
                             <input
                                     value={formValues.name}
                                     onChange={onChange}
                                     id='nameID'
                                     name='name'
                                     type='text'
-                                    placeholder='Name..' />
+                                    placeholder='Userame..' />
                         </label>
                         <label>Password: <br />
                             <input
@@ -225,4 +217,7 @@ button {
    
     
 `
-
+const StyledSignInErrors = styled.div`
+    background: khaki;
+    color: chocolate;
+`;

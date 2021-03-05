@@ -89,16 +89,6 @@ const UserSignUp = () => {
         
     }
     
-    // const onSubmit = event => {
-    //     event.preventDefault();
-    //     const newUsername = {
-    //         name: formValues.name,
-    //         password: formValues.password
-    //     }
-        
-    //     submit();
-    // }
-
     useEffect(() => {
         signUpSchema.isValid(formValues).then((valid) => {
 
@@ -111,10 +101,10 @@ const UserSignUp = () => {
     return (
         <SignUpContainer>
             <h2>Sign Up</h2>
-            <div className='signUpErrors'>
+            <StyledSignUpErrors className='signUpErrors'>
                 <div>{errors.name}</div>
                 <div>{errors.password}</div>
-            </div>
+            </StyledSignUpErrors>
             <SignUpForm onSubmit={handleSubmit}>
                 <label>Name: <br />
                     <input
@@ -143,60 +133,6 @@ const UserSignUp = () => {
 }
 
 export default UserSignUp
-
-
-
-//  const UserSignUp = (props) => {
-    
-//     const { values, change, submit, disabled, errors } = props;
-    
-//     const onChange = event => {
-//         console.log('event target', event.target)
-//         const { name, value } = event.target
-//         change(name, value)
-        
-//     }
-    
-//     const onSubmit = event => {
-//         event.preventDefault();
-        
-//         submit();
-//     }
-//     return (
-//         <SignUpContainer>
-//             <h2>Sign Up</h2>
-//             <div className='signUpErrors'>
-//                 <div>{errors.nameUp}</div>
-//                 <div>{errors.password}</div>
-//             </div>
-//             <SignUpForm onSubmit={onSubmit}>
-//                 <label>Name: <br />
-//                     <input
-//                         type='text'
-//                         name='nameUp'
-//                         values={values.nameUp}
-//                         onChange={onChange}
-//                         placeholder='Enter Name'
-//                         />
-//                 </label>
-//                 <label>Password: <br />
-//                     <input
-//                         type='password'
-//                         name='password'
-//                         value={values.password}
-//                         onChange={onChange}
-//                         placeholder='Enter password here...'
-//                         />
-//                 </label>
-
-//                 <button type='submit' disabled={disabled}>Sign Me Up</button>
-
-//             </SignUpForm>
-//         </SignUpContainer>
-//     )
-// }
-
-// export default UserSignUp
 
 const backgroundImageSignUp = 'https://media1.popsugar-assets.com/files/thumbor/duzrUaRe0-pnPd3CvaG0CqCwRbI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2015/06/29/925/n/1922398/08973f82_42-53706616.jpg'
 
@@ -265,10 +201,12 @@ button {
         border: 2px solid red;
         border-radius: 10px;
     }
-   
-    
 `
 
+const StyledSignUpErrors = styled.div`
+    background: khaki;
+    color: chocolate;
+`;
 
 
 
