@@ -32,11 +32,12 @@ const UserSignUp = () => {
     
     const handleSubmitLogin = (e) => {
       e.preventDefault();
-      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/login", formData)
+      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/", formData)
       .then((res) => {
-        localStorage.setItem('token', res.data.token)
+        console.log(res.data)
+        // localStorage.setItem('token', res.data.token)
         history.push('/CreatePotluckPage')
-        console.log(res)
+        
         
       })
       .catch ((err) => {

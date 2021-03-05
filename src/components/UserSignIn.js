@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
 import * as yup from 'yup'
 import signInSchema from '../validation/signInSchema'
+import {connect} from 'react-redux'
 
 
 const initialFormValues = {
@@ -31,15 +32,14 @@ const UserSignIn = () => {
     const handleSubmitLogin = (e) => {
       
       e.preventDefault();
-      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/register", formData)
+      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/login", formData)
       .then((res) => {
         localStorage.setItem('token', res.data.token)
         history.push('/CreatePotluckPage')
-        console.log(res)
+        console.log(res.data)
         
       })
       .catch ((err) => {
-        setErrors(err)
         setFormData({username: '', password: ''})
         console.log(err)
       })
@@ -142,8 +142,12 @@ const UserSignIn = () => {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+  return state
 
-export default UserSignIn
+}
+
+export default connect(mapStateToProps(), {})(UserSignIn)
 
 const backgroundImageSignIn = 'https://www.makeitgrateful.com/wp-content/uploads/2018/08/potluck-dinner-table.jpg'
 
