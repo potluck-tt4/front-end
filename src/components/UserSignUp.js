@@ -1,11 +1,9 @@
-
-import React, { useState, useEffect } from 'react'
+import {useHistory} from 'react-router-dom'
+import React, { useState, useEffect} from 'react'
 import styled from 'styled-components';
 import * as yup from 'yup';
 import signUpSchema from '../validation/signUpSchema'
-
-
-
+import axios from 'axios'
 
 const initialFormValues = {
     name: '',
@@ -23,10 +21,33 @@ const initialFormValues = {
   const initialDisabled = true
 
 const UserSignUp = () => {
+    const history = useHistory()
+    const [formData, setFormData] = useState ({username: '', password: ''})
     const [username, setUsername] = useState(initialUsername)
     const [formValues, setFormValues] = useState(initialFormValues)
     const [errors, setErrors] = useState(initialFormErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
+
+    
+    
+    const handleSubmitLogin = (e) => {
+      e.preventDefault();
+      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/", formData)
+      .then((res) => {
+        console.log(res.data)
+        // localStorage.setItem('token', res.data.token)
+        history.push('/CreatePotluckPage')
+        
+        
+      })
+      .catch ((err) => {
+        console.log(err)
+      })
+  } 
+
+    
+
+
     
  // form validation
     const handleFormValidation = (name, value) => {
@@ -104,7 +125,7 @@ const UserSignUp = () => {
                         />
                 </label>
 
-                <button type='submit' disabled={disabled}>Sign Me Up</button>
+                <button onClick={handleSubmitLogin} type='submit' disabled={disabled}>Sign Me Up</button>
 
             </SignUpForm>
         </SignUpContainer>
@@ -187,54 +208,7 @@ const StyledSignUpErrors = styled.div`
     color: chocolate;
 `;
 
-    axios
-      .post("https://potluck-backend-tt4.herokuapp.com/api/auth/register", newUser)
-      
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
 
-    submit();
-  };
-
-  return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={onSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            values={formValues.name}
-            onChange={onChange}
-            placeholder="Enter Name"
-          />
-        </label>
-      
-        <label>
-          Password: <br />
-          <input
-            type="password"
-            name="password"
-            value={formValues.password}
-            onChange={onChange}
-            placeholder="Enter password here..."
-          />
-        </label>
-       
-      </form>
-      <button onClick={onSubmit} type="submit">
-        Sign Me Up
-      </button>
-    </div>
-  );
-};
-
-export default UserSignUp;
 
 /*
 export default function UserSignUp(props) {

@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup'
 import PotluckPage from '../PotluckPage'
-
-import Confirmation from './Confirmation'
 import CreatePotluckSchema from '../validation/CreatePotluckSchema'
+import Confirmation from './Confirmation'
 import styled from 'styled-components'
 
 
-const initialFormValues = {
-    Entree: '',
-    Appetizer: '',
-    Dessert: '',
-    Drink: '',
-    Extras: '',
-
-import CreatePotluckSchema from '../validation/CreatePotluckSchema'
 
 
 const initialFormValues = {
@@ -42,7 +33,6 @@ const initialErrors = {
     cover: '',
 
      
- main
 }
 
 
@@ -104,38 +94,10 @@ const CreatePotLuck = () => {
     
     //Validation that input is correct
 
-    const handleChange = (name, value) => {
-        yup
-        .reach(CreatePotluckSchema, name)
-        .validate(value)
-        .then(() => {
-          setErrors({...errors, [name]: "",
-        });
-      })
-      .catch(err => {
-        setErrors({...errors, [name]: err.errors[0]
-        });
-      })
-    
-        setFormValues({
-          ...formValues, [name]: value
-        })
-      };
+
 
       //Submission values to be kept/reset
 
-      const handleSubmit = (evt) => {
-            evt.preventDefault();
-        const newPotluckInfo = {
-          Entree: formValues.Entree.trim(),
-          Appetizer: formValues.Appetizer.trim(),
-          Dessert: formValues.Dessert.trim(),
-          Drink: formValues.Drink.trim(),
-          Extras: formValues.Extras.trim(),
-        }
-        setPotluckInfo(potluckInfo.concat(newPotluckInfo))
-        setFormValues(initialFormValues)
-      }
     
       //Validation for Button to become active
 
@@ -154,7 +116,13 @@ const CreatePotLuck = () => {
     }
     
     return (
+
+        
+        
+
+
         <StyledCPF>
+
             <CreatePotLuckForm className='createPotluckForm' onSubmit={handleSubmit}>
 
                     <h2>Create Your Potluck</h2>
@@ -242,6 +210,7 @@ const CreatePotLuck = () => {
             />
 
         </StyledCPF>
+
     )
 }
 

@@ -1,9 +1,11 @@
-
-import React, { useState, useEffect} from 'react'
+import axios from 'axios'
+import React, { useState, useEffect,} from 'react'
 import CreatePotLuck from './CreatePotLuck'
+import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
 import * as yup from 'yup'
 import signInSchema from '../validation/signInSchema'
+import {connect} from 'react-redux'
 
 
 const initialFormValues = {
@@ -20,10 +22,32 @@ const initialFormValues = {
   const initialDisabled = true;
 
 const UserSignIn = () => {
+    const history = useHistory()
+    const [formData, setFormData] = useState({ username: '', password: '' })
     const [username, setUsername] = useState(initialUsername)
     const [formValues, setFormValues] = useState(initialFormValues)
     const [errors, setErrors] = useState(initialFormErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
+
+    const handleSubmitLogin = (e) => {
+      
+      e.preventDefault();
+      axios.post("https://potluck-backend-tt4.herokuapp.com/auth/login", formData)
+      .then((res) => {
+        localStorage.setItem('token', res.data.token)
+        history.push('/CreatePotluckPage')
+        console.log(res.data)
+        
+      })
+      .catch ((err) => {
+        setFormData({username: '', password: ''})
+        console.log(err)
+      })
+  
+} 
+
+
+    
     
  // form validation
     const handleFormValidation = (name, value) => {
@@ -101,7 +125,7 @@ const UserSignIn = () => {
                                     type='password'
                                     placeholder='Password..' />
                         </label>
-                        <button id='signInBtn' disabled={disabled}>Sign In</button>
+                        <button onClick={handleSubmitLogin} id='signInBtn' disabled={disabled}>Sign In</button>
                     </SignInInputs>
                 </SignInForm>
 
@@ -110,8 +134,12 @@ const UserSignIn = () => {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+  return state
 
-export default UserSignIn
+}
+
+export default connect(mapStateToProps(), {})(UserSignIn)
 
 const backgroundImageSignIn = 'https://www.makeitgrateful.com/wp-content/uploads/2018/08/potluck-dinner-table.jpg'
 

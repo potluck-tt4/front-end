@@ -13,7 +13,9 @@ import PrivateRoute from "../src/components/PrivateRoute";
 
 
 
+
 function App() {
+
 
   return (
     <div className="App">
@@ -21,7 +23,7 @@ function App() {
       <Route exact path="/">
         <Header />
       </Route>
-      <Route exact path="/UserSignIn">
+      <Route exact path="/CreatePotluckPage">
         <UserSignIn
          
         />
